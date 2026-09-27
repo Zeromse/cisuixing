@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>辞岁行 | SideStory UI</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <main class="shell">
+      <aside class="rail" aria-label="活动导航">
+        <button class="rail__back" type="button" aria-label="返回">‹</button>
+        <div class="rail__mark">SIDE<br />STORY</div>
+        <nav class="rail__nav">
+          <button class="rail__item is-active" type="button" data-view="story">
+            <span>剧情</span>
+          </button>
+          <button class="rail__item" type="button" data-view="combat">
+            <span>作战</span>
+          </button>
+          <button class="rail__item" type="button" data-view="shop">
+            <span>商店</span>
+          </button>
+          <button class="rail__item" type="button" data-view="intel">
+            <span>情报</span>
+          </button>
+        </nav>
+      </aside>
+
+      <section class="scene" aria-labelledby="event-title">
+        <div class="skyline" aria-hidden="true">
+          <span class="moon"></span>
+          <span class="lantern lantern--a"></span>
+          <span class="lantern lantern--b"></span>
+          <span class="lantern lantern--c"></span>
+          <span class="roof roof--one"></span>
+          <span class="roof roof--two"></span>
+          <span class="roof roof--three"></span>
+          <span class="mountain mountain--one"></span>
+          <span class="mountain mountain--two"></span>
+        </div>
+
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">RODES ISLAND / EVENT ARCHIVE</p>
+            <h1 id="event-title">辞岁行</h1>
+          </div>
+          <div class="resources" aria-label="活动资源">
+            <button class="resource" type="button" data-toast="合成玉余额已同步">
+              <span class="resource__icon">◇</span>
+              <span>12,640</span>
+            </button>
+            <button class="resource" type="button" data-toast="理智恢复中">
+              <span class="resource__icon">◌</span>
+              <span>98/135</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="copyline">
+          <span>乙巳将尽，灯火重明。沿古道而行，听旧岁回响。</span>
+          <button class="audio-toggle" type="button" aria-pressed="false">
+            <span class="pulse-dot"></span>
+            环境音
+          </button>
+        </div>
+
+        <section class="content-grid">
+          <div class="map-panel" aria-label="活动关卡地图">
+            <div class="map-sweep" aria-hidden="true"></div>
+            <svg class="route" viewBox="0 0 900 470" role="img" aria-label="辞岁行活动路线">
+              <path d="M86 360 C176 275 232 320 300 241 S428 183 514 236 S646 325 728 213 S806 104 849 139" />
+            </svg>
+
+            <button class="stage stage--story is-selected" type="button" style="--x: 9%; --y: 72%" data-stage="CW-1">
+              <span class="stage__code">CW-1</span>
+              <span class="stage__name">雪尽</span>
+            </button>
+            <button class="stage stage--combat" type="button" style="--x: 27%; --y: 56%" data-stage="CW-2">
+              <span class="stage__code">CW-2</span>
+              <span class="stage__name">归灯</span>
+            </button>
+            <button class="stage stage--story" type="button" style="--x: 42%; --y: 38%" data-stage="CW-3">
+              <span class="stage__code">CW-3</span>
+              <span class="stage__name">旧巷</span>
+            </button>
+            <button class="stage stage--boss" type="button" style="--x: 60%; --y: 55%" data-stage="CW-4">
+              <span class="stage__code">CW-4</span>
+              <span class="stage__name">岁火</span>
+            </button>
+            <button class="stage stage--combat" type="button" style="--x: 77%; --y: 32%" data-stage="CW-5">
+              <span class="stage__code">CW-5</span>
+              <span class="stage__name">长街</span>
+            </button>
+            <button class="stage stage--final" type="button" style="--x: 90%; --y: 21%" data-stage="CW-EX">
+              <span class="stage__code">CW-EX</span>
+              <span class="stage__name">辞岁</span>
+            </button>
+
+            <div class="ticker" aria-live="polite">
+              <span>当前开放：普通作战 / 剧情回看 / 岁集兑换</span>
+            </div>
+          </div>
+
+          <aside class="info-panel" aria-label="关卡详情">
+            <div class="panel-head">
+              <span class="panel-head__tag">已选关卡</span>
+              <strong id="selected-code">CW-1</strong>
+            </div>
+            <h2 id="selected-title">雪尽</h2>
+            <p id="selected-desc">年关前的第一段路。雪线退去后，古驿道露出了被灯影遮住的旧痕。</p>
+
+            <div class="stats">
+              <div>
+                <span>推荐等级</span>
+                <strong id="selected-level">Lv. 35</strong>
+              </div>
+              <div>
+                <span>理智消耗</span>
+                <strong id="selected-cost">9</strong>
+              </div>
+              <div>
+                <span>首次奖励</span>
+                <strong id="selected-reward">源石</strong>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="primary" type="button" id="start-stage">开始行动</button>
+              <button class="ghost" type="button" id="read-story">查看剧情</button>
+            </div>
+
+            <div class="log-card">
+              <div class="log-card__title">行动记录</div>
+              <ol id="activity-log">
+                <li>已接入活动档案。</li>
+                <li>请选择路线节点。</li>
+              </ol>
+            </div>
+          </aside>
+        </section>
+
+        <section class="drawer" aria-label="活动内容">
+          <div class="tabs" role="tablist" aria-label="内容分类">
+            <button class="tab is-active" type="button" role="tab" aria-selected="true" data-panel="tasks">委托</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-panel="rewards">兑换</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-panel="archive">档案</button>
+          </div>
+
+          <div class="drawer__body">
+            <div class="panel is-active" id="tasks" role="tabpanel">
+              <article class="task-card">
+                <span class="task-card__label">DAY 01</span>
+                <h3>完成任意 3 次活动作战</h3>
+                <div class="progress"><span style="width: 66%"></span></div>
+                <button type="button" class="claim" data-toast="还差 1 次作战">进行中</button>
+              </article>
+              <article class="task-card">
+                <span class="task-card__label">STORY</span>
+                <h3>阅读「旧巷」剧情</h3>
+                <div class="progress"><span style="width: 100%"></span></div>
+                <button type="button" class="claim can-claim" data-toast="已领取：岁集票据 x120">领取</button>
+              </article>
+              <article class="task-card">
+                <span class="task-card__label">EX</span>
+                <h3>解锁高难关卡 CW-EX</h3>
+                <div class="progress"><span style="width: 25%"></span></div>
+                <button type="button" class="claim" data-toast="请先通关 CW-5">锁定</button>
+              </article>
+            </div>
+
+            <div class="panel reward-grid" id="rewards" role="tabpanel">
+              <button class="reward" type="button" data-toast="家具「行灯长案」已加入清单">
+                <span class="reward__art reward__art--table"></span>
+                <strong>行灯长案</strong>
+                <small>票据 x240</small>
+              </button>
+              <button class="reward" type="button" data-toast="材料包已加入清单">
+                <span class="reward__art reward__art--box"></span>
+                <strong>材料包</strong>
+                <small>票据 x160</small>
+              </button>
+              <button class="reward" type="button" data-toast="龙门币已加入清单">
+                <span class="reward__art reward__art--coin"></span>
+                <strong>龙门币</strong>
+                <small>票据 x80</small>
+              </button>
+            </div>
+
+            <div class="panel archive-grid" id="archive" role="tabpanel">
+              <button class="archive-card" type="button" data-toast="档案已展开">
+                <span>01</span>
+                <strong>灯下信札</strong>
+                <small>一封没有署名的旧信。</small>
+              </button>
+              <button class="archive-card" type="button" data-toast="档案已展开">
+                <span>02</span>
+                <strong>岁末地图</strong>
+                <small>标注了驿道与集市。</small>
+              </button>
+              <button class="archive-card" type="button" data-toast="档案已展开">
+                <span>03</span>
+                <strong>空白春帖</strong>
+                <small>红纸边缘有烟火味。</small>
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="modal" id="stage-modal">
+      <form method="dialog">
+        <button class="modal__close" value="close" aria-label="关闭">×</button>
+        <p class="eyebrow">OPERATION BRIEF</p>
+        <h2 id="modal-title">CW-1 雪尽</h2>
+        <p id="modal-copy">作战路线已载入。</p>
+        <div class="modal__grid">
+          <span>部署上限 <strong>8</strong></span>
+          <span>敌方情报 <strong>普通</strong></span>
+          <span>地形状态 <strong>稳定</strong></span>
+        </div>
+        <button class="primary modal__start" value="start">确认编队</button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
